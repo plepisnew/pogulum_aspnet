@@ -1,0 +1,121 @@
+.home {
+  padding-top: 60px;
+  padding: 2rem;
+
+  padding-top: calc(60px + 2rem);
+  /* padding-bottom: 0; */
+  height: 100vh;
+  background-color: rgb(227, 242, 253);
+  display: flex;
+  gap: 10px;
+}
+
+.trending {
+  padding-top: 2rem;
+  flex: 1;
+  overflow-y: scroll;
+  padding: 1rem;
+}
+
+.activities {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.09);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  gap: 0.5rem;
+  border-radius: 8px;
+  overflow-y: scroll;
+}
+
+.activites-wrapper {
+  max-width: 300px;
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.activites-wrapper h2 {
+  margin-bottom: 0.5rem;
+}
+
+.divider {
+  width: 1px;
+  background-color: rgb(100, 100, 100);
+}
+
+.activity {
+  border: 1px solid black;
+  padding: 0.75rem;
+  background: rgb(250, 250, 250);
+  border-radius: 8px;
+}
+
+.activity span {
+  font-weight: 500;
+}
+
+.activity img {
+  height: 20px;
+  border-radius: 10px;
+  vertical-align: middle;
+  border: 1px solid black;
+}
+
+.carousel {
+  background: rgba(0, 0, 0, 0.09);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.carousel-items {
+  height: 100%;
+  display: inline-flex;
+  /* overflow-x: hidden; */
+  transition: margin-left 300ms;
+}
+
+.carousel-item {
+  /* background: lightgreen; */
+  overflow: hidden;
+  height: 100%;
+  padding: 7px;
+}
+
+.carousel-item img {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-left-btn,
+.carousel-right-btn {
+  position: absolute;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+  width: 30px;
+  height: 30px;
+  top: 50%;
+  transition: opacity 400ms;
+}
+
+.carousel-left-btn:active,
+.carousel-right-btn:active {
+  opacity: 0.8;
+}
+
+.carousel-left-btn {
+  left: 0;
+}
+
+.carousel-right-btn {
+  right: 0;
+}

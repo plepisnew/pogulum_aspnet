@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="icon" href="~/favicon.ico" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Nunito:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    @RenderSection("Styles", false)
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="~/img/tcs.png" />
+        </div>
+        <nav>
+            <ul>
+                @foreach(var titlePath in new Dictionary<string, string>{ { "Home", "/"}, {"Studio", "http://localhost:3000/studio"}, {"Chat Room", "/chat"} })
+                    {
+                        <li>
+                            <a href="@titlePath.Value">@titlePath.Key</a>
+                        </li>
+                    }
+            </ul>
+        </nav>
+        
+        <form action="/api/Auth/Logout" method="get">
+            <button type="submit">Logout</button>
+        </form>
+        <div class="profile-container">
+            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"  />
+        </div>
+    </header>
+
+    <div class="content">
+        @RenderBody()
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

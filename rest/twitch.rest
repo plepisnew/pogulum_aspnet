@@ -1,0 +1,33 @@
+
+### To run install REST Client extension in VSCode
+### Run requests in sequence for setting request variables
+### {{accessToken}} and {{clientId}} are environment variables
+
+@hostname = https://api.twitch.tv/helix
+@gameUrl = {{hostname}}/games
+@clipUrl = {{hostname}}/clips
+@channelUrl = {{hostname}}/channels
+
+@gameName = minecraft
+
+### Get a game by `name`
+# @name fetchGame
+GET {{gameUrl}}?name={{gameName}} HTTP/1.1
+Authorization: Bearer {{accessToken}}
+Client-Id: {{clientId}}
+
+@gameId = {{fetchGame.response.body.data[0].id}}
+
+### Get a clip by `game_id`
+# @name fetchClip
+GET {{clipUrl}}?game_id={{gameId}}&first=1 HTTP/1.1
+Authorization: Bearer {{accessToken}}
+Client-Id: {{clientId}}
+
+@broadcasterId = {{fetchClip.response.body.data[0].broadcaster_id}}
+
+### Get a user by `broadcaster_id`
+# @name fetchUser
+GET {{channelUrl}}?broadcaster_id={{broadcasterId}} HTTP/1.1
+Authorization: Bearer {{accessToken}}
+Client-Id: {{clientId}}

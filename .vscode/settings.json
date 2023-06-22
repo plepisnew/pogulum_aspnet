@@ -1,0 +1,51 @@
+{
+  "editor.wordWrap": "on",
+  "editor.codeLens": false,
+  "editor.fontLigatures": true,
+  "editor.formatOnSave": true,
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "variable.other.object",
+        "settings": {
+          "foreground": "#8bb4f7"
+        }
+      }
+    ]
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "clientId": "0kvjan2jt8lf8qkhjolubt5ggih7ip",
+      "accessToken": "lw5w400gntfq0at35g9a6a18sid6pn"
+    }
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#8672ba",
+    "activityBar.background": "#8672ba",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#6b4434",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#8672ba",
+    "statusBar.background": "#6a52a7",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#8672ba",
+    "statusBarItem.remoteBackground": "#6a52a7",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#6a52a7",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#6a52a799",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#6a52a7"
+}

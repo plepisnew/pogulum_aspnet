@@ -1,0 +1,99 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/Pogulum.Server/Pogulum.Server.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "publish",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "publish",
+        "${workspaceFolder}/Pogulum.Server/Pogulum.Server.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "watch",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "watch",
+        "run",
+        "--project",
+        "${workspaceFolder}/Pogulum.Server/Pogulum.Server.csproj"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "Add Migration",
+      "command": "dotnet",
+      "type": "shell",
+      "args": [
+        "ef",
+        "migrations",
+        "add",
+        "${input:migrationName}",
+        "--",
+        "--environment",
+        "development"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/Pogulum.Data"
+      }
+    },
+    {
+      "label": "Update Database",
+      "command": "dotnet",
+      "type": "shell",
+      "args": [
+        "ef",
+        "database",
+        "update",
+        "--",
+        "--environment",
+        "development"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/Pogulum.Data"
+      }
+    },
+    {
+      "label": "Run Tests",
+      "command": "dotnet",
+      "args": ["test", "--logger:\"console;verbosity=normal\""],
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/Pogulum.Data.Tests"
+      }
+    },
+    {
+      "label": "Run Tests with Logging",
+      "command": "dotnet",
+      "args": ["test", "--logger:\"console;verbosity=detailed\""],
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/Pogulum.Data.Tests"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "migrationName",
+      "description": "Name of the migration to create:",
+      "type": "promptString"
+    }
+  ]
+}

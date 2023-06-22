@@ -1,0 +1,65 @@
+{
+	"React Component": {
+		"scope": "typescript,typescriptreact",
+		"prefix": "rc",
+		"body": [
+			"import React from 'react';",
+			"",
+			"export const $1: React.FC = () => {",
+			"\t$3",
+			"\treturn $2;",
+			"};"
+		]
+	},
+	"React Component with Props": {
+		"scope": "typescript,typescriptreact",
+		"prefix": "rp",
+		"body": [
+			"import React from 'react';",
+			"",
+			"type Props = {$4",
+			"};",
+			"",
+			"export const $1: React.FC<Props> = ({ }) => {",
+			"\t$3",
+			"\treturn $2;",
+			"};"
+		]
+	},
+	"ASP.NET Controller": {
+		"scope": "csharp",
+		"prefix": "ctrl",
+		"body": [
+			"using Microsoft.AspNetCore;",
+			"namespace ${RELATIVE_FILEPATH/[\\\\]|\\w+\\.cs$/./g};",
+			"",
+			"[ApiController]",
+			"[Route(\"api/[controller]s\")]",
+			"public class ${TM_FILENAME_BASE}: ControllerBase",
+			"{",
+			"",
+			"}"
+		]
+	},
+	"ASP.NET Controller Catch Exceptions Block": {
+		"scope": "csharp",
+		"prefix": "catch",
+		"body": [
+			"catch(EntityNotFoundException<$1> e)",
+			"{",
+			"\treturn NotFound(e.Message);",
+			"}",
+			"catch(Exception e)",
+			"{",
+			"\treturn BadRequest(e.Message);",
+			"}"
+		]
+	},
+	"Throw not implemented": {
+		"scope": "csharp",
+		"prefix": "imp",
+		"body": [
+			"throw new NotImplementedException();"
+		]
+	}
+}

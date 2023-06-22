@@ -1,0 +1,84 @@
+@* @page *@
+@model Pogulum.Server.Controllers.HomeModel
+@using Pogulum.Server.Utils
+@section Styles {
+    <link href="~/css/home.css" rel="stylesheet" type="text/css" />
+}
+
+@section Scripts {
+    <script src="~/js/home_game.js"></script>
+    <script src="~/js/home_broadcaster.js"></script>
+}
+
+<div class="home">
+    <div class="trending">
+        <h1 style="margin-bottom: 1rem;">Trending Games:</h1>
+        <div class="carousel game">
+            <button class="carousel-left-btn game">←</button>
+            <button class="carousel-right-btn game">→</button>
+            <div class="carousel-items game">
+                @foreach(var activity in Model.TopGames)
+                {
+                    string url = activity.BoxArtUrl.Replace("{width}", "500").Replace("{height}", "500");
+                    
+                    <div class="carousel-item game">
+                        <img src="@url" />
+                    </div>
+                }
+            </div>
+        </div>
+        <h1 style="margin-bottom: 1rem; margin-top: 1rem;">Trending Broadcasters:</h1>
+        <div class="carousel broadcaster">
+            <button class="carousel-left-btn broadcaster">←</button>
+            <button class="carousel-right-btn broadcaster">→</button>
+            <div class="carousel-items broadcaster">
+                @foreach(var activity in Model.TopBroadcasters)
+                {
+                    string url = activity.ProfileImageUrl;
+                    
+                    <div class="carousel-item broadcaster">
+                        <img src="@url" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="activites-wrapper">
+        <h2>Recent Activities:</h2>
+        <div class="activities">
+            @foreach(var activity in Model.RecentActivities)
+            {
+                string username = @activity.Actor.Username;
+
+                string subjectPicture = "";
+                string subjectUrl = "";
+                string subjectName = "";
+
+                if(activity.GameSubject != null)
+                {
+                    subjectName = activity.GameSubject.Name;
+                    subjectPicture = activity.GameSubject.BoxArtUrl.Replace("{width}", "50").Replace("{height}", "50");
+                    subjectUrl = $"https://www.twitch.tv/directory/game/{System.Web.HttpUtility.UrlEncode(subjectName)}";
+                }
+                else if(activity.BroadcasterSubject != null)
+                {
+                    subjectName = activity.BroadcasterSubject.Name;
+                    subjectPicture = activity.BroadcasterSubject.ProfileImageUrl;
+                    subjectUrl = $"https://www.twitch.tv/{subjectName}";
+                }
+                else if(activity.ClipSubject != null)
+                {
+                    subjectName = activity.ClipSubject.Title;
+                    subjectPicture = activity.ClipSubject.ThumbnailUrl;
+                    subjectUrl = activity.ClipSubject.Url;
+                }
+
+                <div class="activity">
+                    <img src="@activity.Actor.ProfilePictureSrc"/>
+                    <span><a href="/profile/@username">@username</a></span> liked <img src="@subjectPicture"/> <span><a href="@subjectUrl" target="_blank">@subjectName</a></span> @TimeParser.FromIsoToRecent(activity.CreatedAt).
+                </div>
+            }
+        </div>
+    </div>
+</div>
